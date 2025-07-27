@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import SidebarBg from "./../assets/Images/Alefba.png";
+import SidebarBg from "./../assets/Images/SidebarBg.png";
 import LogoIcon from "./../assets/Images/Icon.png";
 import MicIcon from "./../assets/Images/speech_Icon.svg";
 import ArchiveIcon from "./../assets/Images/archive_Icon.svg";
