@@ -1,0 +1,42 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  build: {
+    sourcemap: false,
+  },
+  server: {
+    host: 'localhost',
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      protocol: 'ws',
+      host: 'localhost',
+      port: 5173,
+      clientPort: 5173,
+    },
+    proxy: {
+      '/api': {
+        target: 'https://harf.roshan-ai.ir',
+        changeOrigin: true,
+        rewrite: (path) => path, // مسیر بدون تغییر بمونه
+        secure: false,
+        logLevel: 'debug',
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq, req) => {
+            console.log('Proxying request:', req.url, 'Headers:', proxyReq.getHeaders());
+          });
+          proxy.on('proxyRes', (proxyRes, req) => {
+            console.log('Proxy response:', proxyRes.statusCode, req.url);
+          });
+          proxy.on('error', (err, req, res) => {
+            console.error('Proxy error:', err);
+            res.status(500).json({ error: 'Proxy error' });
+          });
+        },
+      },
+    },
+  },
+});

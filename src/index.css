@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* 
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('./assets/fonts/IRANYekan.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+} */
+/* فقط برای نوار پخش موزیک: show thumb */
+.range-seek::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #118AD3;
+  border: 1px solid #118AD3;
+  margin-top: -6px;
+  cursor: pointer;
+}
+.range-seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #118AD3;
+  border: 1px solid #118AD3;
+  cursor: pointer;
+}
+
+/* فقط برای نوار صدا: پنهان کردن thumb */
+.range-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+}
+.range-volume::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+}
+
+
+/* پشتیبانی از اسکرول سمت چپ در راست به چپ */
+.scrollbar-rtl {
+  direction: rtl;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+  scrollbar-width: thin;
+}
+.scrollbar-rtl::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-rtl::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.scrollbar-rtl::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
