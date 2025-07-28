@@ -114,7 +114,6 @@ function Archive() {
           </h1>
         </div>
 
-        {/* Table Header */}
         <div className="rounded pr-[40px] pl-[60px]">
           <div className="grid grid-cols-14 text-right py-0 pr-[150px] pl-[15px] gap-3 items-center font-bold text-[14px] text-black">
             <div className="col-span-3"></div>
@@ -125,7 +124,6 @@ function Archive() {
             <div className="col-span-1 pr-[45px]"></div>
           </div>
 
-          {/* Rows */}
           <div className="flex flex-col gap-y-3 mt-2 pl-[25px] pr-[150px] mx-w-auto">
             {paginatedItems.map((item) => {
               const type = (item.type || "").toLowerCase().trim();
@@ -146,7 +144,6 @@ function Archive() {
                   } hover:shadow-[0px_1px_5px_0px_#0000001A]`}
                 >
                   <div className="grid grid-cols-14 items-center gap-4 pr-[0px] py-2" style={{ minHeight: "40px" }}>
-                    {/* Action Buttons */}
                     <div className="flex justify-start gap-1 col-span-3 pl-[100px]">
                       <button
                         className="w-[25px] h-[25px] rounded-full flex items-center justify-center hover:bg-[#DC3545]"
@@ -195,22 +192,18 @@ function Archive() {
                       </button>
                     </div>
 
-                    {/* مدت زمان */}
                     <div className="text-center text-[12px] col-span-2">
                       {item.duration || "00:00"}
                     </div>
 
-                    {/* نوع فایل */}
                     <div className="text-center text-[12px] col-span-2">
                       {item.format || "-"}
                     </div>
 
-                    {/* تاریخ */}
                     <div className="text-center text-[12px] col-span-2">
                       {item.date}
                     </div>
 
-                    {/* نام فایل */}
                     <div
                       onClick={() =>
                         setSelectedItemId(
@@ -224,7 +217,6 @@ function Archive() {
                         : item.name}
                     </div>
 
-                    {/* آیکون دایره */}
                     <div className="flex justify-center col-span-1 pr-[30px]">
                       <div
                         className={`w-[32px] h-[32px] rounded-full flex items-center justify-center ${
@@ -250,7 +242,6 @@ function Archive() {
                     </div>
                   </div>
 
-                  {/* نمایش تب‌ها */}
                   {selectedItemId === item.id && item.transcription && (
                     <div className="pl-[50px] pr-[10px] pb-0 pt-0">
                       <TranscriptionTabs
@@ -268,7 +259,6 @@ function Archive() {
           </div>
         </div>
 
-        {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center mt-8 mb-4 gap-2 text-[14px] font-[IRANSansXFaNum]">
             <button

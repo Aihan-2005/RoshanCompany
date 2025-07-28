@@ -93,7 +93,7 @@ function UploadFile({ onTranscriptionReady }) {
         JSON.stringify([archiveItem, ...current])
       );
 
-      onTranscriptionReady(mockTranscription); // ✅ اینجا بود
+      onTranscriptionReady(mockTranscription); 
     } finally {
       setLoading(false);
     }

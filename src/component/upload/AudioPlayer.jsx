@@ -70,9 +70,7 @@ const AudioPlayer = ({ src }) => {
         onLoadedMetadata={handleLoadedMetadata}
       />
 
-      {/* Play/Pause Toggle */}
       <div className="flex items-center gap-3">
-  {/* دکمه پخش (Play) */}
   <button
     onClick={() => {
       audioRef.current?.play();
@@ -83,7 +81,6 @@ const AudioPlayer = ({ src }) => {
     <img src={playIcon} alt="Play" className="w-[12px] h-[12px]" />
   </button>
 
-  {/* دکمه توقف (Pause) */}
   <button
     onClick={() => {
       audioRef.current?.pause();
@@ -96,7 +93,6 @@ const AudioPlayer = ({ src }) => {
 </div>
 
 
-{/* Seek Bar */}
 <div className="relative flex-1 mx-4">
   <input
     type="range"
@@ -134,12 +130,10 @@ const AudioPlayer = ({ src }) => {
 </div>
 
 
-      {/* Time Display */}
       <span className="text-sm text-[#3D3D3D] w-[65px] text-center">
         {formatTime(currentTime)}
       </span>
 
-      {/* Volume */}
       <div className="flex items-center gap- w-[80px] ml-2">
         <img src={volumeIcon} alt="volume" className="w-[13px] h-[13px]" />
         <input

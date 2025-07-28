@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Async thunk برای ارسال فایل و دریافت ترنسکریپشن از API
 export const uploadFile = createAsyncThunk(
   "uploadFile/uploadFile",
   async (file, { rejectWithValue }) => {

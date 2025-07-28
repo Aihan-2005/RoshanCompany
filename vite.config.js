@@ -18,7 +18,6 @@ export default defineConfig({
       clientPort: 5173,
     },
     proxy: {
-      // پراکسی برای API اصلی
       '/api': {
         target: 'https://harf.roshan-ai.ir',
         changeOrigin: true,
@@ -44,7 +43,7 @@ export default defineConfig({
         },
       },
 
-      // پراکسی برای media_image
+      
       '/media_image': {
         target: 'https://harf.roshan-ai.ir',
         changeOrigin: true,

@@ -68,7 +68,6 @@ ${transcription.simple}
           </button>
         </div>
 
-        {/* Tabs */}
         <div className="flex gap-3">
           <button
             onClick={() => setActiveTab("timed")}
@@ -96,7 +95,6 @@ ${transcription.simple}
         </div>
       </div>
 
-      {/* Content */}
       <div className="pl-10 py-6 pr-4">
         {activeTab === "simple" ? (
           <textarea
@@ -137,7 +135,6 @@ ${transcription.simple}
           </div>
         )}
 
-        {/* Audio Player */}
         <div className="mt-8">
           <AudioPlayer src={audioSrc} />
         </div>

@@ -131,7 +131,6 @@ function MainContent() {
         </div>
       </div>
 
-      {/* زبان گفتار */}
       <div
         className="w-[179px] h-[37px] mt-[8px] flex items-center justify-between relative"
         dir="rtl"

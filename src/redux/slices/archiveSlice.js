@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [], // لیست آرشیو
+  items: [], 
 };
 
 const archiveSlice = createSlice({

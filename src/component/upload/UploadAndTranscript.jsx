@@ -6,7 +6,7 @@ function UploadAndTranscript() {
   const [transcription, setTranscription] = useState(null);
 
   const handleRestart = () => {
-    setTranscription(null); // برگرد به حالت آپلود
+    setTranscription(null); 
   };
 
   return (
