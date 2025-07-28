@@ -64,60 +64,39 @@ function VoiceRecorder() {
     }
   };
 
-  const uploadAudioBlob = async (blob) => {
-    const formData = new FormData();
-    formData.append('file', blob, 'voice.webm');
-
-    const res = await fetch('/upload', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const json = await res.json();
-    if (json.success && json.link) {
-      return json.link;
-    } else {
-      throw new Error('❌ آپلود فایل با خطا مواجه شد.');
-    }
-  };
-
   const sendToHarfAPI = async (blob, localURL, duration) => {
     try {
-
-      const formData  = new FormData();
-      const file = new File([blob],"voice.webm",{type:'audio/webm'});
-      formData.append("flies",file);
-
-      const response = await fetch('/api/transcribe_files/', {
+      const formData = new FormData();
+      const file = new File([blob], 'voice.webm', { type: 'audio/webm' });
+      formData.append('files', file); 
+      const response = await fetch("/api/transcribe_files/", {
         method: 'POST',
         headers: {
-    
           Authorization: `Token ${API_TOKEN}`,
         },
-        body:formData,
+        body: formData,
       });
 
-
-      if (!response.ok){
-        throw new Error(`خطا در پاسخ:${response.status}`);
+      if (!response.ok) {
+        throw new Error(`خطا در پاسخ: ${response.status}`);
       }
 
       const text = await response.text();
-
-      if (!text){
-        throw new Error("بدنه پاسخ خالی است");
+      if (!text) {
+        throw new Error('بدنه پاسخ خالی است');
       }
+
       let data;
       try {
         data = JSON.parse(text);
       } catch (e) {
-        console.error('❌ JSON Parse Error:', e,'محتوا:',text);
+        console.error('❌ JSON Parse Error:', e, 'محتوا:', text);
         dispatch(setTranscript('❌ پاسخ معتبر از سرور دریافت نشد.'));
         saveToArchive('❌ پاسخ معتبر از سرور دریافت نشد.', localURL, duration);
         return;
       }
 
-      console.log(' پاسخ از حَرْف:', data);
+      console.log('✅ پاسخ از حَرْف:', data);
 
       let directText = '';
       if (Array.isArray(data) && data[0]?.segments) {
@@ -130,7 +109,7 @@ function VoiceRecorder() {
         directText = data.transcription_text;
       }
 
-      const finalText = directText || ' فایل ارسال شد، اما متنی دریافت نشد.';
+      const finalText = directText || '✅ فایل ارسال شد، اما متنی دریافت نشد.';
       dispatch(setTranscript(finalText));
       saveToArchive(finalText, localURL, duration);
     } catch (error) {
