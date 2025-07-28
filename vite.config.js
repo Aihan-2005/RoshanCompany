@@ -18,24 +18,38 @@ export default defineConfig({
       clientPort: 5173,
     },
     proxy: {
+      // پراکسی برای API اصلی
       '/api': {
         target: 'https://harf.roshan-ai.ir',
         changeOrigin: true,
-        rewrite: (path) => path, // مسیر بدون تغییر بمونه
+        rewrite: (path) => path,
         secure: false,
         logLevel: 'debug',
         configure: (proxy) => {
           proxy.on('proxyReq', (proxyReq, req) => {
             console.log('Proxying request:', req.url, 'Headers:', proxyReq.getHeaders());
           });
+
           proxy.on('proxyRes', (proxyRes, req) => {
             console.log('Proxy response:', proxyRes.statusCode, req.url);
           });
+
           proxy.on('error', (err, req, res) => {
             console.error('Proxy error:', err);
-            res.status(500).json({ error: 'Proxy error' });
+            if (res.writeHead) {
+              res.writeHead(500, { 'Content-Type': 'application/json' });
+            }
+            res.end(JSON.stringify({ error: 'Proxy error' }));
           });
         },
+      },
+
+      // پراکسی برای media_image
+      '/media_image': {
+        target: 'https://harf.roshan-ai.ir',
+        changeOrigin: true,
+        secure: false,
+        logLevel: 'debug',
       },
     },
   },

@@ -4,6 +4,7 @@ import transcriptionReducer from "./slices/transcriptionSlice";
 import audioSlice from "./slices/audioSlice";
 import voiceReducer from './slices/voiceSlice';
 import archiveReducer from './slices/archiveSlice';
+import uploadFileSlice from './slices/uploadFileSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
      audio: audioSlice,
     voice: voiceReducer,
      archive: archiveReducer,
+     upload:uploadFileSlice,
   },
 });
 
